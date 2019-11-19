@@ -1,38 +1,27 @@
 <?php
-use \Symfony\Component\HttpFoundation\Request;
 
-# 1. arrivée de la requête
-# correspond à la requête entrante de notre utilisateur
-$request = Request::createFromGlobals();
-# dump ($request);
-
+# 1. déduction du controller et de l'action
 # récupération des paramètres GET et affectation d'une valeur par défaut.
 # https://www.php.net/manual/fr/language.operators.comparison.php
 //$controller = $_GET['controller'] ?? 'default';
 //$action     = $_GET['action'] ?? 'home';
-$controller = 'App\\Controller\\' . ucfirst($request->get('controller')) . 'Controller'; //?? 'default';
-$action     = $request->get('action'); // ?? 'home';
+$controller = 'App\\Controller\\' . ucfirst( ($request->get('controller') ?? DEFAULT_CONTROLLER) ) . 'Controller'; //?? 'default';
+$action     = $request->get('action') ?? DEFAULT_ACTION; // home
 
-//-----------------chargement de TWIG--------------------
+# 2a. chargement de TWIG
+$loader = new \Twig\Loader\FilesystemLoader(PATH_TEMPLATE);
+$twig = new \Twig\Environment($loader, ['cache' => false,]);
 
-#récupération du chemin absolu vers le dossier "templates"
-define( 'PATH_ROOT', dirname( $request->server->get('SCRIPT_FILENAME'), 2 ) );
-define( 'PATH_TEMPLATE', PATH_ROOT . '/templates' );
+# 2b. on stocke l'instance de TWIG dans notre container
+$container->set('twig', $twig);
 
-$loader = new \Twig\Loader\FilesystemLoader('/path/to/templates');
-$twig = new \Twig\Environment($loader, [
-    'cache' => false,
-]);
-
-//------------ROUTAGE AUTOMATIQUE----------------------
-# exécution automatique de routage
-# 2. traitement de la requête
+# 3. traitement de la requête
 /** @var \Symfony\Component\HttpFoundation\Response $response */
-$response = call_user_func_array([$controller, $action], []);
+$response = call_user_func_array([new $controller, $action], []);
 # dump($response);
 
 
-# 3. on retourne une réponse au client
+# 4. on retourne une réponse au client
 $response->send();
 
 //------------ROUTAGE MANUEL----------------------------

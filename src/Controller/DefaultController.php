@@ -4,7 +4,7 @@ use \Symfony\Component\HttpFoundation\Response;
 
 //use Model\Article;
 
-class DefaultController
+class DefaultController extends AbstractController
 {
     /**
      * La fonction "home" est une action.
@@ -14,10 +14,7 @@ class DefaultController
      */
     public function home()
     {
-        # récupération des articles de la bdd
-        //$article = new Article();
-        //echo '<h1>PAGE ACCUEIL | CONTROLLER</h1>';
-        return new Response('<h1>PAGE ACCUEIL | CONTROLLER | RESPONSE</h1>');
+        return $this->render('default/home.html.twig');
     }
 
     /**

@@ -1,4 +1,7 @@
 <?php
+
+use \Symfony\Component\HttpFoundation\Request;
+
 /**
  * ici, notre fichier index.php représente notre contrôleur frontal.
  * il a pour charge de rediriger la requête de l'utilisateur en s'aidant des paramètres dans l'URL.
@@ -15,7 +18,22 @@
 # autochargement des classes avec Composer
 require_once '../vendor/autoload.php';
 
-# chargement des routes
+# 1. arrivée de la requête
+# correspond à la requête entrante de notre utilisateur
+$request = Request::createFromGlobals();
+# dump ($request);
+
+# mise en place du Container
+$container = \App\Model\Container\Container::getInstance();
+
+# on stocke la requête de l'utilisateur dans le container
+$container->set('request', $request);
+# dump($container);
+
+# chargement de la configuration
+require_once '../config.php'; // on charge la config avant de charger l'application
+
+# chargement de l'application
 require_once '../app.php';
 
 # aperçu de $_GET
