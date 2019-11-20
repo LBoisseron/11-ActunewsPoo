@@ -2,17 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="27ff3315-7f4b-4786-8b0e-21517e9647c6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/config.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Controller/AbstractController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Controller/TraitController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Model/Container/Container.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/Components/_nav.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/default/home.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/kernel/kernel.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/kernel/middleware/pdo.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/kernel/middleware/router.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/kernel/middleware/twig.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Model/DB/DbFactory.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Model/DB/DbTable.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/default/article.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/default/category.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Public/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/Public/index.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/app.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/config.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/DefaultController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/DefaultController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Article.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Article.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Category.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Category.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/Components/_nav.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Components/_nav.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/default/home.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/home.html.twig" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -53,6 +60,8 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\wf3gpe\11-ActunewsPoo\http" />
+      <recent name="C:\xampp\htdocs\wf3gpe\11-ActunewsPoo\middleware" />
       <recent name="C:\xampp\htdocs\wf3gpe\11-ActunewsPoo" />
       <recent name="C:\xampp\htdocs\wf3gpe\11-ActunewsPoo\Public" />
     </key>
@@ -83,6 +92,7 @@
       <workItem from="1574080574155" duration="15921000" />
       <workItem from="1574106857085" duration="63000" />
       <workItem from="1574167226950" duration="16377000" />
+      <workItem from="1574253497899" duration="33000" />
     </task>
     <servers />
   </component>

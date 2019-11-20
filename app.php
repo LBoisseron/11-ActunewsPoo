@@ -1,27 +1,15 @@
 <?php
 
-# 1. déduction du controller et de l'action
-# récupération des paramètres GET et affectation d'une valeur par défaut.
-# https://www.php.net/manual/fr/language.operators.comparison.php
-//$controller = $_GET['controller'] ?? 'default';
-//$action     = $_GET['action'] ?? 'home';
-$controller = 'App\\Controller\\' . ucfirst( ($request->get('controller') ?? DEFAULT_CONTROLLER) ) . 'Controller'; //?? 'default';
-$action     = $request->get('action') ?? DEFAULT_ACTION; // home
+# 1. chargement du kernel
+require_once 'kernel/kernel.php';
 
-# 2a. chargement de TWIG
-$loader = new \Twig\Loader\FilesystemLoader(PATH_TEMPLATE);
-$twig = new \Twig\Environment($loader, ['cache' => false,]);
-
-# 2b. on stocke l'instance de TWIG dans notre container
-$container->set('twig', $twig);
-
-# 3. traitement de la requête
+# 2. traitement de la requête
 /** @var \Symfony\Component\HttpFoundation\Response $response */
 $response = call_user_func_array([new $controller, $action], []);
 # dump($response);
 
 
-# 4. on retourne une réponse au client
+# 3. on retourne une réponse au client
 $response->send();
 
 //------------ROUTAGE MANUEL----------------------------
