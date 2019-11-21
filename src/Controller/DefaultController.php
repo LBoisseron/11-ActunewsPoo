@@ -17,16 +17,14 @@ class DefaultController extends AbstractController
      */
     public function home()
     {
-        # vérification
-        $article = new Article();
-        $category = new Category();
-        $user = new User();
+        # 1. récupération des articles de la BDD
+        $articles = (new Article())->findAll();
 
-        dump($article->findAll());
-        dump($category->findAll());
-        dump($user->findAll());
 
-        return $this->render('default/home.html.twig');
+        # 2. transmission des données à la vue
+        return $this->render('default/home.html.twig', [
+            'articles' => $articles
+        ]);
     }
 
     /**
@@ -35,8 +33,22 @@ class DefaultController extends AbstractController
     public function category()
     {
 
+        # récupération de l'instance de request dans le container
+        $request = $this->getParameter('request');
 
-        return $this->render('default/category.html.twig');
+        # récupération de la request du paramètre $_GET 'id'
+        $idCategorie = $request->get('id') ?? 1;
+
+        # récupération des articles de la catégorie
+        $article = new Article();
+
+        $where = 'idCategorie = ' . $idCategorie;
+        $articles = $article->findAll($where);
+        // dump($articles);
+
+        return $this->render('default/category.html.twig', [
+            'articles' => $articles
+        ]);
     }
 
     /**
@@ -44,8 +56,18 @@ class DefaultController extends AbstractController
      */
     public function article()
     {
-        //echo '<h1>PAGE ARTICLE | CONTROLLER</h1>';
-        //return new Response('<h1>PAGE ARTICLE | CONTROLLER | RESPONSE</h1>');
-        return $this->render('default/article.html.twig');
+        # récupération de l'instance de request dans le container
+        $request = $this->getParameter('request');
+
+        # récupération dans request du paramètre
+        $idArticle = $request->get('id') ?? 0;
+
+        # récupération de l'article dans la BDD
+        $article = (new Article())->findOne($idArticle);
+
+        # transmission de l'article à la vue
+        return $this->render('default/article.html.twig', [
+            'article' => $article
+        ]);
     }
 }

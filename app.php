@@ -8,7 +8,6 @@ require_once 'kernel/kernel.php';
 $response = call_user_func_array([new $controller, $action], []);
 # dump($response);
 
-
 # 3. on retourne une réponse au client
 $response->send();
 
